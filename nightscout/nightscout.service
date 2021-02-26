@@ -1,0 +1,44 @@
+[Unit]
+Description=Nightscout CGM.
+
+[Service]
+Execstart=/usr/bin/node /usr/lib/node_modules/nightscout/server.js
+DynamicUser=yes
+
+EnvironmentFile=/etc/nightscout/nightscout-environ
+
+Restart=on-failure
+
+PrivateTmp=yes
+PrivateDevices=true
+PrivateUsers=true
+
+DevicePolicy=closed
+
+ProtectSystem=strict
+ProtectHome=tmpfs
+BindPaths=/home/git
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectClock=true
+ProtectKernelLogs=yes
+ProtectHostname=yes
+
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+NoNewPrivileges=yes
+LockPersonality=yes
+
+MemoryDenyWriteExecute=yes
+
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target
