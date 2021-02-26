@@ -1,0 +1,18 @@
+[Unit]
+Description=Gitea git hosting.
+
+[Service]
+Execstart=/usr/bin/gitea web
+User=git
+Group=git
+
+RuntimeDirectory=gitea
+StateDirectory=gitea
+ConfigurationDirectory=gitea
+
+PIDFile=/run/gitea/gitea.pid
+
+PrivateDevices=yes
+
+[Install]
+WantedBy=multi-user.target
