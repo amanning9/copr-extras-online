@@ -29,7 +29,8 @@ Nightscout CGM in the cloud.
 
 if [ "$1" = 1 ]; then
     pushd %{nodejs_sitelib}/%{name}
-    /usr/bin/npm run-script generate-keys
+    node bin/generateRandomString.js > %{_sysconfdir}/nightscout/randomString
+    ln -s %{_sysconfdir}/nightscout/randomString tmp/randomString
     popd
 fi
 
