@@ -1,18 +1,60 @@
 [Unit]
 Description=Gitea git hosting.
+After=mariadb.service
 
 [Service]
 Execstart=/usr/bin/gitea web
 User=git
 Group=git
 
-RuntimeDirectory=gitea
-StateDirectory=gitea
-ConfigurationDirectory=gitea
-
 PIDFile=/run/gitea/gitea.pid
 
 PrivateDevices=yes
+
+MemoryMax=1G
+MemoryHigh=750M
+MemorySwapMax=1G
+
+CPUWeight=50
+
+ConfigurationDirectory=gitea
+RuntimeDirectory=gitea
+StateDirectory=gitea
+
+Restart=always
+
+PrivateTmp=yes
+PrivateDevices=true
+PrivateUsers=true
+
+DevicePolicy=closed
+
+ProtectSystem=strict
+ProtectHome=tmpfs
+BindPaths=/home/git
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectClock=true
+ProtectKernelLogs=yes
+ProtectHostname=yes
+
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+NoNewPrivileges=yes
+LockPersonality=yes
+
+ReadWritePaths=/srv/containers/git
+MemoryDenyWriteExecute=yes
+
+#SystemCallFilter=@file-system
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
 
 [Install]
 WantedBy=multi-user.target
