@@ -52,7 +52,7 @@ cp -pr * %{buildroot}%{nodejs_sitelib}/%{name}
 
 rm -rf %{buildroot}%{nodejs_sitelib}/%{name}/tmp/randomString
 
-cp -p docs/example-template.env %{buildroot}%{_sysconfdir}/nightscout/nightscout-environ
+install -D docs/example-template.env %{buildroot}%{_sysconfdir}/nightscout/nightscout-environ
 
 install -D %{SOURCE1} %{buildroot}%{_unitdir}/nightscout.service
 
