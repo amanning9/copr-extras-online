@@ -27,6 +27,12 @@ Nightscout CGM in the cloud.
 %post
 %systemd_post nightscout.service
 
+if [ "$1" = 1 ]; then
+    pushd %{nodejs_sitelib}/%{name}
+    /usr/bin/npm run-script generate-keys
+    popd
+fi
+
 %preun
 %systemd_preun nightscout.service
 
