@@ -44,13 +44,13 @@ fi
 %forgesetup
 
 %build
-npm install
+npm install --no-audit --no-fund --omit=dev --ignore-scripts
+#webpack --mode production --config webpack/webpack.config.js
 
 %install
 mkdir -p %{buildroot}%{nodejs_sitelib}/%{name}
-cp -pr * %{buildroot}%{nodejs_sitelib}/%{name}
-
-rm -rf %{buildroot}%{nodejs_sitelib}/%{name}/tmp/randomString
+cp -r --no-preserve=mode,ownership * %{buildroot}%{nodejs_sitelib}/%{name}
+chmod -R -x %{buildroot}%{nodejs_sitelib}/%{name}
 
 install -D docs/example-template.env %{buildroot}%{_sysconfdir}/nightscout/nightscout-environ
 
