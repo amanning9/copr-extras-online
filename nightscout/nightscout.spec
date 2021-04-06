@@ -54,11 +54,15 @@ cp -pr \
     lib \
     server.js \
     bundle \
+    translations \
+    views \
+    bin \
+    static \
     %{buildroot}%{nodejs_sitelib}/%{name}
 cp -pr node_modules %{buildroot}%{nodejs_sitelib}/%{name}
 
-install -D docs/example-template.env %{buildroot}%{_sysconfdir}/nightscout/nightscout-environ
-install -D %{SOURCE1} %{buildroot}%{_unitdir}/nightscout.service
+install -m 644 -D docs/example-template.env %{buildroot}%{_sysconfdir}/nightscout/nightscout-environ
+install -m 644 -D %{SOURCE1} %{buildroot}%{_unitdir}/nightscout.service
 
 %files
 %license LICENSE

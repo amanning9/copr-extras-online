@@ -2,6 +2,7 @@
 Description=Nightscout CGM.
 
 [Service]
+WorkingDirectory /usr/lib/node_modules/nightscout
 Execstart=/usr/bin/node /usr/lib/node_modules/nightscout/server.js
 DynamicUser=yes
 
