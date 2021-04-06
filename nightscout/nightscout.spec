@@ -58,6 +58,7 @@ cp -pr \
     views \
     bin \
     static \
+    tmp \
     %{buildroot}%{nodejs_sitelib}/%{name}
 cp -pr node_modules %{buildroot}%{nodejs_sitelib}/%{name}
 
