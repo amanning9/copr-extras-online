@@ -26,11 +26,9 @@ Nightscout CGM in the cloud.
 
 %post
 %systemd_post nightscout.service
-
 if [ "$1" = 1 ]; then
     pushd %{nodejs_sitelib}/%{name}
     node bin/generateRandomString.js > %{_sysconfdir}/nightscout/randomString
-    ln -s %{_sysconfdir}/nightscout/randomString tmp/randomString
     popd
 fi
 
@@ -44,16 +42,22 @@ fi
 %forgesetup
 
 %build
-npm install --no-audit --no-fund --omit=dev --ignore-scripts
-#webpack --mode production --config webpack/webpack.config.js
+npm install --no-audit --no-fund --omit=dev
+rm tmp/randomString
+ln -s %{_sysconfdir}/nightscout/randomString tmp/randomString
+chmod -R -x+X *
 
 %install
 mkdir -p %{buildroot}%{nodejs_sitelib}/%{name}
-cp -r --no-preserve=mode,ownership * %{buildroot}%{nodejs_sitelib}/%{name}
-chmod -R -x %{buildroot}%{nodejs_sitelib}/%{name}
+cp -pr \
+    package.json \
+    lib \
+    server.js \
+    bundle \
+    %{buildroot}%{nodejs_sitelib}/%{name}
+cp -pr node_modules %{buildroot}%{nodejs_sitelib}/%{name}
 
 install -D docs/example-template.env %{buildroot}%{_sysconfdir}/nightscout/nightscout-environ
-
 install -D %{SOURCE1} %{buildroot}%{_unitdir}/nightscout.service
 
 %files

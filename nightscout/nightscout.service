@@ -17,7 +17,6 @@ DevicePolicy=closed
 
 ProtectSystem=strict
 ProtectHome=tmpfs
-BindPaths=/home/git
 ProtectControlGroups=yes
 ProtectKernelModules=yes
 ProtectKernelTunables=yes
