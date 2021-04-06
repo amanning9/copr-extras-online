@@ -3,10 +3,12 @@ Description=Nightscout CGM.
 
 [Service]
 WorkingDirectory=/usr/lib/node_modules/nightscout
-ExecStart=/usr/bin/node /usr/lib/node_modules/nightscout/server.js
+ExecStart=/usr/bin/node server.js
 DynamicUser=yes
 
 EnvironmentFile=/etc/nightscout/nightscout-environ
+
+ReadOnlyPaths=/usr/lib/node_modules/nightscout
 
 Restart=on-failure
 
@@ -33,7 +35,7 @@ RestrictSUIDSGID=yes
 NoNewPrivileges=yes
 LockPersonality=yes
 
-MemoryDenyWriteExecute=yes
+#MemoryDenyWriteExecute=yes
 
 CapabilityBoundingSet=
 SystemCallArchitectures=native
