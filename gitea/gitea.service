@@ -3,7 +3,7 @@ Description=Gitea git hosting.
 After=mariadb.service
 
 [Service]
-Execstart=/usr/bin/gitea web
+ExecStart=/usr/bin/gitea web
 User=git
 Group=git
 
