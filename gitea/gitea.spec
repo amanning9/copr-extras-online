@@ -1,5 +1,5 @@
 %global forgeurl https://github.com/go-gitea/gitea
-Version: 1.14.2
+Version: 1.14.6
 
 %forgemeta
 
