@@ -1,5 +1,5 @@
 %global forgeurl https://github.com/nightscout/cgm-remote-monitor
-Version: 14.2.2
+Version: 14.2.4
 %global tag %version
 
 %forgemeta
