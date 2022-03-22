@@ -17,6 +17,7 @@ BuildRequires:  nodejs
 BuildRequires:  npm
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  gcc
+BuildRequires:  git
 
 %description
 Gitea
