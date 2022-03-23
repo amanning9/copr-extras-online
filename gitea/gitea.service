@@ -47,10 +47,8 @@ RestrictSUIDSGID=yes
 NoNewPrivileges=yes
 LockPersonality=yes
 
-ReadWritePaths=/srv/containers/git
 MemoryDenyWriteExecute=yes
 
-#SystemCallFilter=@file-system
 CapabilityBoundingSet=
 SystemCallArchitectures=native
 SystemCallFilter=@system-service

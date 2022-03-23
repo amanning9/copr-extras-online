@@ -4,7 +4,7 @@ Version: 1.16.4
 %forgemeta
 
 Name:           gitea
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Gitea
 
 License:        MIT
